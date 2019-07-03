@@ -26,6 +26,14 @@
         },
         props: {
             todoItem: Object
+        },
+        watch: {
+            todoItem: {
+                immediate: true,
+                handler () {
+                    this.syncActiveStatus();
+                }
+            }
         }
     }
 </script>
