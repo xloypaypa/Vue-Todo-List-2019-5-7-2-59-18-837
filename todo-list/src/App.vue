@@ -19,6 +19,7 @@ export default {
   methods:{
     addItem: function () {
       this.todoList.push(this.todoName);
+      this.todoName = "";
     }
   },
   data: function () {
