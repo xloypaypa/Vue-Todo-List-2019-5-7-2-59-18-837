@@ -24,7 +24,7 @@ export default {
   data: function () {
     return {
       todoName: "",
-      todoList: ['a', 'b', 'c']
+      todoList: []
     }
   }
 }
