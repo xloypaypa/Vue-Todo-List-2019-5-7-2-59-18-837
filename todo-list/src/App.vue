@@ -20,11 +20,11 @@
         methods: {
             addItem: function () {
                 const index = this.todoList.length;
-                this.todoList.push({index: index, name: this.todoName, active: true});
+                this.todoList.push({index: index, name: this.todoName, finished: false});
                 this.todoName = "";
             },
             updateStatus: function (event) {
-                this.todoList[event.index].active = event.active;
+                this.todoList[event.index].finished = event.finished;
             }
         },
         data: function () {

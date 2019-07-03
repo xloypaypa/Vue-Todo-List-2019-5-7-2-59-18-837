@@ -12,16 +12,16 @@
         name: "TodoItem",
         methods: {
             syncActiveStatus: function () {
-                this.isFinished = !this.todoItem.active;
+                this.isFinished = this.todoItem.finished;
             },
             updateStatus: function (event) {
-                this.$emit("update-status", {index: this.todoItem.index, active: !event.target.checked});
+                this.$emit("update-status", {index: this.todoItem.index, finished: event.target.checked});
                 setTimeout(this.syncActiveStatus);
             }
         },
         data: function () {
             return {
-                isFinished: !this.todoItem.active
+                isFinished: this.todoItem.finished
             }
         },
         props: {
