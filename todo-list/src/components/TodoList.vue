@@ -13,6 +13,4 @@
     }
 </script>
 
-<style scoped>
-
-</style>
+<style src="../css/todoListStyle.css"></style>
