@@ -2,7 +2,7 @@
     <ol>
         <TodoItem v-for="todoItem in todoList"
                   v-bind:todoItem="todoItem"
-                  v-on:update-status="updateStatus"/>
+                  v-on:update-todo-item="updateTodoItem"/>
     </ol>
 </template>
 
@@ -12,8 +12,8 @@
         name: "TodoList",
         components: {TodoItem},
         methods:{
-            updateStatus: function (event) {
-                this.$emit("update-status", event);
+            updateTodoItem: function (event) {
+                this.$emit("update-todo-item", event);
             }
         },
         props: {

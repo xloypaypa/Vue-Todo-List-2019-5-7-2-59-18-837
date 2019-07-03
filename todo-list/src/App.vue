@@ -6,7 +6,7 @@
             <input v-model="todoName"/>
         </label>
         <button v-on:click="addItem">Add</button>
-        <TodoList v-bind:todoList="displayList" v-on:update-status="updateStatus"/>
+        <TodoList v-bind:todoList="displayList" v-on:update-todo-item="updateTodoItem"/>
         <button v-on:click="updateFilter(showAll)">ALL</button>
         <button v-on:click="updateFilter(showActive)">Active</button>
         <button v-on:click="updateFilter(showComplete)">Complete</button>
@@ -27,7 +27,8 @@
                 this.displayList = this.todoList.filter(this.displayFilter);
                 this.todoName = "";
             },
-            updateStatus: function (event) {
+            updateTodoItem: function (event) {
+                this.todoList[event.index].name = event.name;
                 this.todoList[event.index].finished = event.finished;
             },
             showAll: function () {

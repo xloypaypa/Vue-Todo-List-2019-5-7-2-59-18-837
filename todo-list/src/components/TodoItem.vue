@@ -1,9 +1,12 @@
 <template>
     <li>
         <label>
-            <input type="checkbox" v-model="isFinished" v-on:change="updateStatus">
+            <input type="checkbox" v-model="isFinished" v-on:change="updateFinishedStatus">
         </label>
-        <span>{{todoItem.name}}</span>
+        <span v-if="!edit" v-on:dblclick="edit = true">{{todoItem.name}}</span>
+        <label>
+            <input v-if="edit" v-model="tempName" v-on:focusout="updateName">
+        </label>
     </li>
 </template>
 
@@ -11,16 +14,25 @@
     export default {
         name: "TodoItem",
         methods: {
-            syncActiveStatus: function () {
+            syncTodoItem: function () {
                 this.isFinished = this.todoItem.finished;
             },
-            updateStatus: function (event) {
-                this.$emit("update-status", {index: this.todoItem.index, finished: event.target.checked});
-                setTimeout(this.syncActiveStatus);
+            updateName(event) {
+                this.updateTodoItem(event.target.value, this.todoItem.finished);
+                this.edit = false;
+            },
+            updateFinishedStatus(event) {
+                this.updateTodoItem(this.todoItem.name, event.target.checked);
+            },
+            updateTodoItem: function (name, finished) {
+                this.$emit("update-todo-item", {index: this.todoItem.index, name: name, finished: finished});
+                setTimeout(this.syncTodoItem);
             }
         },
         data: function () {
             return {
+                edit: false,
+                tempName: this.todoItem.name,
                 isFinished: this.todoItem.finished
             }
         },
@@ -31,7 +43,7 @@
             todoItem: {
                 immediate: true,
                 handler () {
-                    this.syncActiveStatus();
+                    this.syncTodoItem();
                 }
             }
         }
