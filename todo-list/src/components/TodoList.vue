@@ -1,9 +1,9 @@
 <template>
-    <ul>
+    <ol>
         <TodoItem v-for="todoItem in todoList"
                   v-bind:todoItem="todoItem"
                   v-on:update-status="updateStatus"/>
-    </ul>
+    </ol>
 </template>
 
 <script>
