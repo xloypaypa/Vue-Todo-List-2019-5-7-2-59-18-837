@@ -18,7 +18,7 @@ export default {
   components: {TodoList},
   methods:{
     addItem: function () {
-      this.todoList.push(this.todoName);
+      this.todoList.push({name: this.todoName, active: true});
       this.todoName = "";
     }
   },

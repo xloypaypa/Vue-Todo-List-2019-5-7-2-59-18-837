@@ -1,6 +1,8 @@
 <template>
     <ul>
-        <li v-for="todo in todoList">{{todo}}</li>
+        <li v-for="todo in todoList">
+            {{todo.name}}
+        </li>
     </ul>
 </template>
 
