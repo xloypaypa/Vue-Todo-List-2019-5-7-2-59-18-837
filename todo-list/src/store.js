@@ -10,9 +10,15 @@ const state = {
 const store = new Vuex.Store({
     state,
     getters: {
-        getTodoList: (state) => () => {
+        getAllTodoList: (state) => () => {
             return state.todoList;
-        }
+        },
+        showActiveTodoList: (state) => () => {
+            return state.todoList.filter((todoItem) => !todoItem.finished);
+        },
+        showCompleteTodoList: (state) => () => {
+            return state.todoList.filter((todoItem) => todoItem.finished);
+        },
     },
     mutations: {
         addItem(state, todoItemWithoutIndex) {
