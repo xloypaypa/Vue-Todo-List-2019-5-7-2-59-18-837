@@ -11,6 +11,8 @@
 </template>
 
 <script>
+    import { mapGetters, mapMutations } from 'vuex'
+
     export default {
         name: "TodoItem",
         methods: {
@@ -18,16 +20,17 @@
                 this.isFinished = this.todoItem.finished;
             },
             updateName(event) {
-                this.updateTodoItem(event.target.value, this.todoItem.finished);
+                this.updateTodoItem({...this.todoItem, name: event.target.value});
                 this.edit = false;
+                setTimeout(this.syncTodoItem);
             },
             updateFinishedStatus(event) {
-                this.updateTodoItem(this.todoItem.name, event.target.checked);
-            },
-            updateTodoItem: function (name, finished) {
-                this.$emit("update-todo-item", {index: this.todoItem.index, name: name, finished: finished});
+                this.updateTodoItem({...this.todoItem, finished: event.target.checked});
                 setTimeout(this.syncTodoItem);
-            }
+            },
+            ...mapMutations([
+                'updateTodoItem',
+            ]),
         },
         data: function () {
             return {
@@ -39,6 +42,9 @@
         props: {
             todoItem: Object
         },
+        computed: mapGetters([
+            'getCountByIndex',
+        ]),
         watch: {
             todoItem: {
                 immediate: true,

@@ -36,7 +36,7 @@ const store = new Vuex.Store({
             Vue.set(state.todoList, index, {...todoItemWithoutIndex, index: index});
         },
         updateTodoItem(state, todoItem) {
-            Vue.set(state.todoList, index, todoItem);
+            Vue.set(state.todoList, todoItem.index, todoItem);
         },
     }
 });
