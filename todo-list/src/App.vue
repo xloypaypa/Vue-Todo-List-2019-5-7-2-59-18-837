@@ -2,14 +2,13 @@
     <div id="app">
         <h2>Vue To Do List</h2>
         <p>Simple Todo List with adding and filter by diff status.</p>
-        <label>
-            <input v-model="todoName"/>
-        </label>
-        <button v-on:click="addItem">Add</button>
+        <a-input-search v-model="todoName" size="large" @search="addItem">
+            <a-button type="danger" slot="enterButton">Add</a-button>
+        </a-input-search>
         <TodoList v-bind:todoList="displayList" v-on:update-todo-item="updateTodoItem"/>
-        <button v-on:click="updateFilter(showAll)">ALL</button>
-        <button v-on:click="updateFilter(showActive)">Active</button>
-        <button v-on:click="updateFilter(showComplete)">Complete</button>
+        <a-button type="primary" v-on:click="updateFilter(showAll)">ALL</a-button>
+        <a-button type="primary" v-on:click="updateFilter(showActive)">Active</a-button>
+        <a-button type="primary" v-on:click="updateFilter(showComplete)">Complete</a-button>
     </div>
 </template>
 
