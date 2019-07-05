@@ -1,8 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './pages/App.vue'
+import Main from "./pages/Main.vue";
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  render: h => h(Main),
+}).$mount('#app');
