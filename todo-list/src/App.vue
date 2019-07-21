@@ -6,26 +6,13 @@
 
 <script>
 
-    import Hello from "./components/Hello";
-    import TodoMain from "./TodoMain"
-
-    import Status from "./status"
+    import Vue from 'vue'
 
     export default {
         name: 'app',
-        components: {Hello, TodoMain},
         data: function () {
             return {
-                show: new Status([
-                    {
-                        path: '/hello',
-                        needShow: Hello,
-                    },
-                    {
-                        path: '/',
-                        needShow: TodoMain,
-                    }
-                ]).show,
+                show: Vue.status.show
             }
         }
     }
