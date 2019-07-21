@@ -1,7 +1,6 @@
 <template>
     <div>
         <component :is="show"/>
-        <TodoMain/>
     </div>
 </template>
 
@@ -21,6 +20,10 @@
                     {
                         path: '/hello',
                         needShow: Hello,
+                    },
+                    {
+                        path: '/',
+                        needShow: TodoMain,
                     }
                 ]).show,
             }
