@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Hello v-if="!status"/>
+        <Hello v-if="status"/>
         <TodoMain/>
     </div>
 </template>
@@ -10,12 +10,14 @@
     import Hello from "./components/Hello";
     import TodoMain from "./TodoMain"
 
+    import Status from "./status"
+
     export default {
         name: 'app',
         components: {Hello, TodoMain},
         data: function () {
             return {
-                status: window.location.pathname !== '/hello'
+                status: new Status('/hello').status,
             }
         }
     }
