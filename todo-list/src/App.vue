@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Hello v-if="status"/>
+        <component :is="show"/>
         <TodoMain/>
     </div>
 </template>
@@ -17,7 +17,12 @@
         components: {Hello, TodoMain},
         data: function () {
             return {
-                status: new Status('/hello').status,
+                show: new Status([
+                    {
+                        path: '/hello',
+                        needShow: Hello,
+                    }
+                ]).show,
             }
         }
     }
