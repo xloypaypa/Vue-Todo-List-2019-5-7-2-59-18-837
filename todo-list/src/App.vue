@@ -1,20 +1,15 @@
 <template>
     <div>
-        <component :is="show"/>
+        <Router/>
     </div>
 </template>
 
 <script>
 
-    import Vue from 'vue'
-
+    import Router from "./Router";
     export default {
         name: 'app',
-        data: function () {
-            return {
-                show: Vue.status.show
-            }
-        }
+        components: {Router},
     }
 </script>
 
